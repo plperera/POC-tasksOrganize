@@ -4,6 +4,9 @@ export type TaskType = {
 
     id:number,
     description:string,
+    answerable: string,
+    until: string | Date,
     active: boolean
     
 }
+export type TaskTypeWithoutUntil = Omit<TaskType, "until">

@@ -1,5 +1,5 @@
 import express from 'express';
-import { getActiveTasks, insertSingleTask, switchActiveStatusTask, getDoneTasks, getAllTasks, deleteSingleTask} from './controllers/tasks.controller.js';
+import { getActiveTasks, insertSingleTask, switchActiveStatusTask, getDoneTasks, getAllTasks, deleteSingleTask, getAllTasksByAnswerable} from './controllers/tasks.controller.js';
 
 const server = express()
 server.use(express.json())
@@ -11,6 +11,7 @@ server.get("/status", (req, res) => {
 server.get("/tasks", getActiveTasks)
 server.get("/tasks/done", getDoneTasks)
 server.get("/tasks/all", getAllTasks)
+server.get("/tasks/:answerable", getAllTasksByAnswerable)
 server.post("/tasks", insertSingleTask)
 server.put("/tasks", switchActiveStatusTask)
 server.delete("/tasks", deleteSingleTask)
